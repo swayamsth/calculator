@@ -31,6 +31,7 @@ clearBtns.forEach(button => button.addEventListener("click", (e) => {
 
 evaluate.addEventListener("click", () => {
     calculate();
+    screen.textContent = previousValue;
 })
 
 function handleNumbers(num){
@@ -61,5 +62,6 @@ function calculate(){
             previousValue /= currentValue;
             break;
     }
-    console.log(previousValue);
+    previousValue = previousValue.toString();
+    currentValue = previousValue.toString();
 }
