@@ -34,6 +34,10 @@ evaluate.addEventListener("click", () => {
     screen.textContent = previousValue;
 })
 
+decimal.addEventListener("click", () => {
+    addDecimal();
+})
+
 function handleNumbers(num){
     currentValue += num;
 }
@@ -50,18 +54,45 @@ function calculate(){
 
     switch (operator){
         case "+":
-            previousValue += currentValue;
+            add()
             break;
         case "-":
-            previousValue -= currentValue;
+            subtract();
             break;
         case "x":
-            previousValue *= currentValue;
+            multiply();
             break;
         case "÷":
-            previousValue /= currentValue;
+            divide();
             break;
     }
+    previousValue = roundNumber(previousValue);
     previousValue = previousValue.toString();
     currentValue = previousValue.toString();
+}
+
+function roundNumber(num){
+    return Math.round(num * 100) / 100;
+}
+
+function addDecimal(){
+    if (!currentValue.includes(".")){
+        currentValue += ".";
+    }
+}
+
+function add(){
+    previousValue += currentValue;
+}
+
+function subtract(){
+    previousValue -= currentValue;
+}
+
+function multiply(){
+    previousValue *= currentValue;
+}
+
+function divide(){
+    previousValue /= currentValue;
 }
