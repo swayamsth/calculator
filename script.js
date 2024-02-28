@@ -30,8 +30,10 @@ clearBtns.forEach(button => button.addEventListener("click", (e) => {
 }))
 
 evaluate.addEventListener("click", () => {
-    calculate();
-    screen.textContent = previousValue;
+    if (previousValue != "" && currentValue != ""){
+        calculate();
+        screen.textContent = previousValue;
+    }
 })
 
 decimal.addEventListener("click", () => {
